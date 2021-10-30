@@ -22,23 +22,17 @@ function addBook(event){
     let text = document.createTextNode(title);
     td.appendChild(text);
     tr.appendChild(td);
-    // analoogselt //// vahel kirjutatud koodiga saab lisada ka ülejäänud väärtused
-    // ja lisame tabelisse loodud tr
-    bookList.appendChild(tr);
-    tr = document.createElement('tr');
-    td = document.createElement('tr');
+
     text = document.createTextNode(author);
     td.appendChild(text);
     tr.appendChild(td);
-    bookList.appendChild(tr);
-
-    tr = document.createElement('tr');
-    td = document.createElement('tr');
     text = document.createTextNode(isbn);
     td.appendChild(text);
     tr.appendChild(td);
-    bookList.appendChild(tr);
+    // analoogselt //// vahel kirjutatud koodiga saab lisada ka ülejäänud väärtused
+    // ja lisame tabelisse loodud tr
 
+    bookList.appendChild(tr);
 
     const link = document.createElement('a');
     link.setAttribute('href', '#')
