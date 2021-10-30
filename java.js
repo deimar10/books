@@ -7,7 +7,7 @@ const addIbn = document.querySelector('#isbn');
 const bookList = document.querySelector('#book-list')
 //
 
-form.addEventListener('submit', addBook)
+form.addEventListener('submit', addBook);
 bookList.addEventListener('click', deleteTask);
 
 function addBook(event){
@@ -39,16 +39,64 @@ function addBook(event){
     link.className = 'secondary-content';
     link.appendChild(document.createTextNode('x'));
     td.appendChild(link);
-
+    // save task
+    addTitleToLocalStorage(title)
+    addAuthorToLocalStorage(author)
+    addIsbnToLocalStorage(isbn)
+    // clear input value
+    addTitle.value = '';
+    addAuthor.value = '';
+    addIbn.value = '';
+    // form submit event control
     event.preventDefault();
 }
 function deleteTask(event){
     if(event.target.textContent == 'x'){
         if(confirm("Do you want to delete this list")){
             event.target.parentElement.remove();
+            // localstoragest kustutamine
+            title = event.target.parentElement.firstChild.textContent;
+            deleteTitleFromLocalStorage(title);
+            author = event.target.parentElement.firstChild.textContent;
+            deleteAuthorFromLocalStorage(author);
+            isbn = event.target.parentElement.firstChild.textContent;
+            deleteIbnFromLocalStorage(isbn);
         }
     }
 }
+function addTitleToLocalStorage(title){
+    let books;
+    if(localStorage.getItem('books') === null){
+        books = [];
+    } else {
+        books = JSON.parse(localStorage.getItem('books'));
+    }
+    books.push(title);
+    localStorage.setItem('books', JSON.stringify(books));
+}
+function addAuthorToLocalStorage(author){
+    let books;
+    if(localStorage.getItem('books') === null){
+        books = [];
+    } else {
+        books = JSON.parse(localStorage.getItem('books'));
+    }
+    books.push(author);
+    localStorage.setItem('books', JSON.stringify(books));
+}
+function addIsbnToLocalStorage(isbn){
+    let books;
+    if(localStorage.getItem('books') === null){
+        books = [];
+    } else {
+        books = JSON.parse(localStorage.getItem('books'));
+    }
+    books.push(isbn);
+    localStorage.setItem('books', JSON.stringify(books));
+}
+
+
+
 
 
 
