@@ -94,7 +94,51 @@ function addIsbnToLocalStorage(isbn){
     books.push(isbn);
     localStorage.setItem('books', JSON.stringify(books));
 }
-.
+function deleteTitleFromLocalStorage(title){
+    let books;
+    if (localStorage.getItem('books') === null){
+        books = [];
+    } else {
+        books = JSON.parse(localStorage.getItem('books'));
+    }
+    books.forEach(function (booksElement, index){
+        if (booksElement === title){
+            books.splice(index, 1);
+        }
+    });
+    localStorage.setItem('books', JSON.stringify(books));
+    console.log(books)
+}
+function deleteAuthorFromLocalStorage(author){
+    let books;
+    if (localStorage.getItem('books') === null){
+        books = [];
+    } else {
+        books = JSON.parse(localStorage.getItem('books'));
+    }
+    books.forEach(function (booksElement, index){
+        if (booksElement === author){
+            books.splice(index, 1);
+        }
+    });
+    localStorage.setItem('books', JSON.stringify(books));
+    console.log(books)
+}
+function deleteIbnFromLocalStorage(isbn){
+    let books;
+    if (localStorage.getItem('books') === null){
+        books = [];
+    } else {
+        books = JSON.parse(localStorage.getItem('books'));
+    }
+    books.forEach(function (booksElement, index){
+        if (booksElement === isbn){
+            books.splice(index, 1);
+        }
+    });
+    localStorage.setItem('books', JSON.stringify(books));
+    console.log(books)
+}
 
 
 
